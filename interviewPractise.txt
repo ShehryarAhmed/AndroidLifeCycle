@@ -1,0 +1,24 @@
+class Timer (lifeCycle:LifeCycler):LifecycleObserver{
+	var secondCounts = 0;
+	
+	@OnLifecycleEvent(Lifecycle.Event.ON_START)
+	fun startTimer(){
+		Log.d("test","timer")
+	}
+
+	@OnLifecycleEvent(Lifecycle.Event.ON_STOP)
+	fun stopTimer(){
+		Log.d("test","Stop")
+	}
+	
+}
+
+class Activity : AppCompatActivity(){
+	lateinit val timer : Timer
+
+	fun oncreate(){
+	super.onCreate(savedInstanceState)
+
+	timer = Timer(this.lifeCycle)	
+}
+}
